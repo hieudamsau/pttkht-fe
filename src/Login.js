@@ -11,9 +11,18 @@ const Login = () => {
        console.log(res);
        if(res?.data?.status === 200){
         toast.success('dang nhap thanh cong')
-        localStorage.setItem('accessoken',res?.data?.data?.access_token)
+        localStorage.setItem('access_token',res?.data?.data?.access_token)
         localStorage.setItem('user',JSON.stringify(res?.data?.data?.data_user))
-        navigate('/teacher')
+        if(res?.data?.data?.data_user?.role === 1){
+          navigate('/teacher')
+        }
+        else if(res?.data?.data?.data_user?.role === 2){
+          navigate('/students')
+        }
+        else{
+          navigate('/marks')
+        }
+        
        } else{
         toast.error('dang nhap dep dc')
        }

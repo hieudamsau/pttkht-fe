@@ -1,8 +1,8 @@
 import { AxiosClient } from "./AxiosClitent";
 
 const StudentApi = {
-    getAll(){
-        const url =`/users/all-paging-student `;
+    getAll(currentPage){
+        const url =`/users/all-paging-student?page_index=${currentPage}&page_size=5 `;
         return AxiosClient.get(url)
     },
     login(data){

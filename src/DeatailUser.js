@@ -52,14 +52,14 @@ const listRole = [
 
 const DeatailUser = () => {
 	const {slug} = useParams()
-	console.log(slug)
+	
 	const {id} = useParams()
 	const navigate = useNavigate()
 	const [userDeail, setUserDetail] = useState()
 	const {control, reset, handleSubmit} = useForm()
 	const {Option} = Select
 	const [gender, setGender] = useState(2)
-	const [role, setRole] = useState(1)
+	const [role, setRole] = useState()
 	const onSelectGender = (value) => {
 		setGender(value)
 	}
@@ -68,6 +68,14 @@ const DeatailUser = () => {
 	}
 	console.log('gender', gender);
 	useEffect(() => {
+		switch(slug){
+			case 'student':
+				setRole(3)
+				break
+			case 'teacher':
+				setRole(2)
+				break
+		}
 		if (id) {
 			const getUserById = async () => {
 				try {
@@ -107,9 +115,9 @@ const DeatailUser = () => {
 			StudentApi.addUser(values).then(res =>{
 				if(res.data.status === 200){
 					navigate("/teacher")
-					toast.success("Thêm giáo viên thành công")
+					toast.success("Thêm thành công")
 				}else {
-					toast.error("Thêm giáo viên thất bại")
+					toast.error("Thêm thất bại")
 				}
 			})
 		}
@@ -155,7 +163,7 @@ const DeatailUser = () => {
 						type={"number"}
 						name={'phone'}
 					/>
-					<div style={{display: 'flex', width: '100%'}}>
+					{/* <div style={{display: 'flex', width: '100%'}}>
 						<span style={{width: '100%', fontWeight: '700'}}>Quyền :</span>
 						<Select
 							bordered={false}
@@ -171,7 +179,7 @@ const DeatailUser = () => {
 							))}
 						</Select>
 
-					</div>
+					</div> */}
 					<div style={{display: 'flex', width: '100%'}}>
 						<span style={{width: '100%', fontWeight: '700'}}>Giới tính :</span>
 						<Select

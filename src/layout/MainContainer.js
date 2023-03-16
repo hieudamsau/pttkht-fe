@@ -28,7 +28,7 @@ const MainContainer = ({children}) => {
 				change?.current?.open()
 				break
 			case "logout":
-				localStorage.removeItem("accessoken")
+				localStorage.removeItem("access_token")
 				localStorage.removeItem("user")
 				window.location.reload()
 				break
@@ -88,8 +88,11 @@ const MainContainer = ({children}) => {
 							style={{
 								height: '100%',
 							}}
+							
 							items={
+								user?.role === 1?
 								[
+								
 									{
 										label: 'Giáo viên',
 										value: '/marks'
@@ -98,7 +101,14 @@ const MainContainer = ({children}) => {
 										label: 'Học sinh ',
 										value: '/student'
 									}
-								]
+								]:
+								user?.role === 2?
+								[
+									{
+										label: 'Học sinh ',
+										value: '/student'
+									}
+								]:""
 
 							}
 						/>

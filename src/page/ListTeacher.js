@@ -18,6 +18,7 @@ const ListTeacher = () => {
         })
     },[])
     const data = teacher?.data
+
   return (
     <div>
           <MainContainer>
@@ -25,7 +26,7 @@ const ListTeacher = () => {
                   <div style={{marginBottom:'10px'}}>
                       <span
                         style={{padding:'10px 10px',color:"#fff",background:"#37911f",borderRadius:'12px',cursor:'pointer'}}
-                        onClick={()=>navigate("/user")}
+                        onClick={()=>navigate("/user/teacher")}
                       >Thêm giáo viên</span>
                   </div>
                   <Table dataSource={data} rowKey={data => data?.id} style={{textAlignLast: 'center'}} pagination={false}>
