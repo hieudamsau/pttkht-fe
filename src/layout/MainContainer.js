@@ -2,7 +2,7 @@ import {Breadcrumb, Layout, Menu, theme} from 'antd';
 import {useNavigate} from "react-router-dom";
 import {useRef} from "react";
 import ModalChangePass from "../component/ModalChangePass";
-
+import image from "../image/logo.png"
 const {Header, Content, Footer, Sider} = Layout;
 
 const MainContainer = ({children}) => {
@@ -37,11 +37,12 @@ const MainContainer = ({children}) => {
 	return (
 		<Layout>
 			<Header className="header">
-				<div className="logo"/>
+				<img src={image} className="logo" style={{position:"absolute",width:'220px',top:"-26px"}}/>
 				<Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}
 					  style={{justifyContent: 'end'}}
 					  onClick={click}
-					  items={[{
+					  items={[
+						{
 						  label: `Xin chào : ${user?.full_name}`,
 						  key: 'SubMenu',
 						  children: [
@@ -59,7 +60,8 @@ const MainContainer = ({children}) => {
 								  ],
 							  },
 						  ],
-					  }]}
+					  }
+					]}
 				/>
 			</Header>
 			<Content

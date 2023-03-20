@@ -3,6 +3,7 @@ import{useForm} from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import StudentApi from './api/StudentApi'
+import "./login.css"
 const Login = () => {
     const {register , handleSubmit}=useForm()
     const navigate = useNavigate()
@@ -24,26 +25,34 @@ const Login = () => {
         }
         
        } else{
-        toast.error('dang nhap dep dc')
+        toast.error('Dang nhap that')
        }
     }
   return (
-    <div>
-       <form onSubmit={handleSubmit(onSubmit)}>
+    <div className={"container"} style={{display:'flex',justifyContent:'center'}}>
+       <form onSubmit={handleSubmit(onSubmit)} 
+        style={{
+          margin:"0 auto",
+          top:'45%',
+          width:'20%',
+          position:'absolute'
+        }}
+       >
+        <div style={{textAlign:"center",marginBottom:'10px'}}><span>LOGIN</span></div>
         <div>
-        <input
-          className='form-control'
-          {...register('user_name')}
-        />
+          <input
+            className='form-control input'
+            {...register('user_name')}
+          />
         </div>
        <div>
        <input
-          className='form-control'
+          className='form-control input'
           {...register('password')}
         />
        </div>
            <div>
-            <button type='submit'>Dang nhap cmm di</button>
+            <button type='submit'>Dang nhap</button>
            </div>
         </form> 
 

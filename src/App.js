@@ -15,6 +15,7 @@ function App() {
 			<BrowserRouter>
 				<ToastContainer/>
 				<ListRote>
+					<Route exact path='/' element={<RequireAuth><ListTeacher/></RequireAuth>}/>
 					<Route exact path='/teacher' element={<RequireAuth><ListTeacher/></RequireAuth>}/>
 					<Route exact path='/marks/:ma_sv' element={<RequireAuth><MarkDetail/></RequireAuth>}/>
 					<Route exact path='/marks' element={<RequireAuth><MarkDetail/></RequireAuth>}/>
